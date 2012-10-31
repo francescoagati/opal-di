@@ -9,15 +9,8 @@ module OpalDI
 
     def set(name,opt = {},&blk)
 
-      if opt[:shared] == true
-        @shared[name]={
-          :blk => blk,
-        }
-      else
-        @registry[name]={
-          :blk => blk,
-        }
-      end
+      register= opt[:shared] == true ?  @shared :  @registry
+      register[name]={ blk:blk }
 
     end
 
