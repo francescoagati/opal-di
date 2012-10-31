@@ -1,2 +1,3 @@
 /build
-build/opal-gem.js
+build/*,js
+build/specs.js

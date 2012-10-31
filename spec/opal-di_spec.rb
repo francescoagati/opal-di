@@ -65,17 +65,27 @@ describe OpalDI do
 
         end
 
-        @cont.set(:accumulator, :shared => true) {|cnt|  Accumulator.new }
+        cnt2=0
+        Accumulator2=Class.new do
+          
+          define_method :initialize do
+            cnt2=cnt2+1
+          end
 
-        @cont[:accumulator].get
-        @cont[:accumulator].get
-        @cont[:accumulator].get
-        @cont[:accumulator].get
-        @cont[:accumulator].get
-        @cont[:accumulator].get
-        @cont[:accumulator].get
-        
+          define_method :get do
+            cnt2
+          end
+
+        end
+
+
+        @cont.set(:accumulator, :shared => true) {|cnt|  Accumulator.new }
+        @cont.set(:accumulator_notshared) {|cnt|  Accumulator2.new }
+
+        (0...8).each { @cont[:accumulator].get }  
+        (0...8).each { @cont[:accumulator_notshared].get }        
         @cont[:accumulator].get.should == 1
+        @cont[:accumulator_notshared].get.should == 9
 
 
       end
