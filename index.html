@@ -54,6 +54,18 @@
 
 <pre><code>  cont.set(:accumulator, :shared =&gt; true) {|cnt|  Accumulator.new }
 </code></pre>
+
+<p>Multi get</p>
+
+<p>A container can return many services with a single get</p>
+
+<pre><code>
+   name,surname,label = @cont.get([:name,:surname,:label])
+    name.should == 'mario'
+    surname.should == 'rossi'
+    label.should  == 'mario rossi'
+
+</code></pre>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/francescoagati">francescoagati</a></p>
