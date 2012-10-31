@@ -14,12 +14,11 @@ module OpalDI
 
     end
 
-    def get(name)
-      if @registry[name]
-        @registry[name][:blk].call(self)
+    def get(arg)
+      if arg.class == Array
+        arg.map {|name| real_get(name) }
       else
-        @shared[name][:blk] = @shared[name][:blk].call(self) if @shared[name][:blk].class == Proc
-        @shared[name][:blk]
+        real_get(arg)
       end
     end
 
@@ -28,6 +27,19 @@ module OpalDI
     end
 
     alias [] get
+
+    protected
+
+    def real_get(name)
+
+      if @registry[name]
+        @registry[name][:blk].call(self)
+      else
+        @shared[name][:blk] = @shared[name][:blk].call(self) if @shared[name][:blk].class == Proc
+        @shared[name][:blk]
+      end
+
+    end
 
 
   end
