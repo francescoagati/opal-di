@@ -50,6 +50,35 @@ describe OpalDI do
 
       end
 
+      it "check for services shared" do
+
+        cnt=0
+        Accumulator=Class.new do
+          
+          define_method :initialize do
+            cnt=cnt+1
+          end
+
+          define_method :get do
+            cnt
+          end
+
+        end
+
+        @cont.set(:accumulator, :shared => true) {|cnt|  Accumulator.new }
+
+        @cont[:accumulator].get
+        @cont[:accumulator].get
+        @cont[:accumulator].get
+        @cont[:accumulator].get
+        @cont[:accumulator].get
+        @cont[:accumulator].get
+        @cont[:accumulator].get
+        
+        @cont[:accumulator].get.should == 1
+
+
+      end
 
     end
 

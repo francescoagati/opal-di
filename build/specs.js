@@ -1,6 +1,6 @@
 // spec/opal-di_spec.rb
 (function() {
-  var __opal = Opal, self = __opal.top, __scope = __opal, nil = __opal.nil, __breaker = __opal.breaker, __slice = __opal.slice;
+  var __opal = Opal, self = __opal.top, __scope = __opal, nil = __opal.nil, __breaker = __opal.breaker, __slice = __opal.slice, __hash2 = __opal.hash2;
   var __a, __b;
   return (__b = self, __b.$describe._p = (__a = function() {
 
@@ -24,7 +24,7 @@
       }, __a._s = this, __a), __b.$it("exists Container"));
       return (__c = this, __c.$describe._p = (__a = function() {
 
-        var __a, __b, __c, __d, __e, __f, __g;
+        var __a, __b, __c, __d, __e, __f, __g, __h;
         
         (__b = this, __b.$before._p = (__a = function() {
 
@@ -117,7 +117,7 @@
           }, __a._s = this, __a), __d.$set("label"));
           return this.cont['$[]']("label").$should()['$==']("mario rossi");
         }, __a._s = this, __a), __f.$it("use array sintax"));
-        return (__g = this, __g.$it._p = (__a = function() {
+        (__g = this, __g.$it._p = (__a = function() {
 
           var __a, __b, __c, __d;
           if (this.cont == null) this.cont = nil;
@@ -148,6 +148,46 @@
           }, __a._s = this, __a), __d.$lambda()));
           return this.cont['$[]']("label").$should()['$==']("mario rossi");
         }, __a._s = this, __a), __g.$it("array sintax for getter"));
+        return (__h = this, __h.$it._p = (__a = function() {
+
+          var cnt = nil, __a, __b, __c;
+          if (this.cont == null) this.cont = nil;
+
+          
+          cnt = 0;
+          __scope.Accumulator = (__b = __scope.Class, __b.$new._p = (__a = function() {
+
+            var __a, __b, __c;
+            
+            (__b = this, __b.$define_method._p = (__a = function() {
+
+              var __a, __b;
+              
+              return cnt = (__a = cnt, __b = 1, typeof(__a) === 'number' ? __a + __b : __a['$+'](__b))
+            }, __a._s = this, __a), __b.$define_method("initialize"));
+            return (__c = this, __c.$define_method._p = (__a = function() {
+
+              
+              
+              return cnt
+            }, __a._s = this, __a), __c.$define_method("get"));
+          }, __a._s = this, __a), __b.$new());
+          (__c = this.cont, __c.$set._p = (__a = function(cnt) {
+
+            
+            if (cnt == null) cnt = nil;
+
+            return __scope.Accumulator.$new()
+          }, __a._s = this, __a), __c.$set("accumulator", __hash2(["shared"], {"shared": true})));
+          this.cont['$[]']("accumulator").$get();
+          this.cont['$[]']("accumulator").$get();
+          this.cont['$[]']("accumulator").$get();
+          this.cont['$[]']("accumulator").$get();
+          this.cont['$[]']("accumulator").$get();
+          this.cont['$[]']("accumulator").$get();
+          this.cont['$[]']("accumulator").$get();
+          return this.cont['$[]']("accumulator").$get().$should()['$=='](1);
+        }, __a._s = this, __a), __h.$it("check for services shared"));
       }, __a._s = this, __a), __c.$describe("check instance"));
     }, __a._s = this, __a), __c.$describe((__scope.OpalDI)._scope.Container));
   }, __a._s = self, __a), __b.$describe(__scope.OpalDI))
