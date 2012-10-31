@@ -27,3 +27,12 @@ A service can be also shared. In this case is returned always an unique instance
 ```
   cont.set(:accumulator, :shared => true) {|cnt|  Accumulator.new }
 ```
+
+Multi get
+
+A container can return many services with a single get
+
+```
+
+
+```
