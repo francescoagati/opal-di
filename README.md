@@ -22,7 +22,7 @@ or use array syntax for  access
 
 ```
 
-A service can be also shared. In this case is returned always an unique instance of the service.
+A service can be also shared. In this case return always an unique instance of the service.
 
 ```
   cont.set(:accumulator, :shared => true) {|cnt|  Accumulator.new }
