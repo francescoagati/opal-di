@@ -14,7 +14,10 @@ module OpalDI
       @registry[name].call
     end
     
-    #alias []= set
+    def []=(name,blk)
+      set(name,&blk)
+    end
+    
     alias [] get
     
     

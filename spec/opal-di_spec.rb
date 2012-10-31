@@ -24,22 +24,32 @@ describe OpalDI do
       end
 
       it "set and get multi services" do
-        
+
         @cont.set(:name) { |cnt| "mario" }
         @cont.set(:surname) {|cnt| "rossi" }
         @cont.set(:label) {|cnt| "#{@cont.get(:name)} #{@cont.get(:surname)}"  }
         @cont.get(:label).should == "mario rossi"
-        
+
       end
-      
+
       it "use array sintax" do
-        
+
         @cont.set(:name) { |cnt| "mario" }
         @cont.set(:surname) {|cnt| "rossi" }
         @cont.set(:label) {|cnt| "#{@cont[:name]} #{@cont[:surname]}"  }
         @cont[:label].should == "mario rossi"
-      
+
       end
+
+      it "array sintax for getter" do
+
+        @cont[:name]= proc { |cnt| "mario" }
+        @cont[:surname]= ->(cnt) { "rossi" }
+        @cont[:label]= ->(cnt)  {"#{@cont[:name]} #{@cont[:surname]}"  }
+        @cont[:label].should == "mario rossi"
+
+      end
+
 
     end
 

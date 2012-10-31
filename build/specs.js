@@ -24,7 +24,7 @@
       }, __a._s = this, __a), __b.$it("exists Container"));
       return (__c = this, __c.$describe._p = (__a = function() {
 
-        var __a, __b, __c, __d, __e, __f;
+        var __a, __b, __c, __d, __e, __f, __g;
         
         (__b = this, __b.$before._p = (__a = function() {
 
@@ -86,7 +86,7 @@
           }, __a._s = this, __a), __d.$set("label"));
           return this.cont.$get("label").$should()['$==']("mario rossi");
         }, __a._s = this, __a), __e.$it("set and get multi services"));
-        return (__f = this, __f.$it._p = (__a = function() {
+        (__f = this, __f.$it._p = (__a = function() {
 
           var __a, __b, __c, __d;
           if (this.cont == null) this.cont = nil;
@@ -117,6 +117,37 @@
           }, __a._s = this, __a), __d.$set("label"));
           return this.cont['$[]']("label").$should()['$==']("mario rossi");
         }, __a._s = this, __a), __f.$it("use array sintax"));
+        return (__g = this, __g.$it._p = (__a = function() {
+
+          var __a, __b, __c, __d;
+          if (this.cont == null) this.cont = nil;
+
+          
+          this.cont['$[]=']("name", (__b = this, __b.$proc._p = (__a = function(cnt) {
+
+            
+            if (cnt == null) cnt = nil;
+
+            return "mario"
+          }, __a._s = this, __a), __b.$proc()));
+          this.cont['$[]=']("surname", (__c = this, __c.$lambda._p = (__a = function(cnt) {
+
+            
+            if (cnt == null) cnt = nil;
+
+            return "rossi"
+          }, __a._s = this, __a), __c.$lambda()));
+          this.cont['$[]=']("label", (__d = this, __d.$lambda._p = (__a = function(cnt) {
+
+            
+            if (this.cont == null) this.cont = nil;
+
+            if (cnt == null) cnt = nil;
+
+            return "" + (this.cont['$[]']("name")) + " " + (this.cont['$[]']("surname"))
+          }, __a._s = this, __a), __d.$lambda()));
+          return this.cont['$[]']("label").$should()['$==']("mario rossi");
+        }, __a._s = this, __a), __g.$it("array sintax for getter"));
       }, __a._s = this, __a), __c.$describe("check instance"));
     }, __a._s = this, __a), __c.$describe((__scope.OpalDI)._scope.Container));
   }, __a._s = self, __a), __b.$describe(__scope.OpalDI))

@@ -31,6 +31,11 @@
         return this.registry['$[]'](name).$call();
       };
 
+      Container_prototype['$[]='] = function(name, blk) {
+        var __a;
+        return (__a = this, __a.$set._p = blk.$to_proc(), __a.$set(name));
+      };
+
       return Container_prototype['$[]'] = Container_prototype.$get;
     })(OpalDI, null)
     

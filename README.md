@@ -12,8 +12,12 @@ A dependency injection for opal ruby inspired to pimple.
 
 ```
 
-or use array syntax for read access
+or use array syntax for  access
 
 ```
+  cont[:name]= proc { |cnt| "mario" }
+  cont[:surname]= ->(cnt) { "rossi" }
+  cont[:label]= ->(cnt)  {"#{cont[:name]} #{cont[:surname]}"  }
   cont[:label].should == "mario rossi"
+
 ```
