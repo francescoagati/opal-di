@@ -34,5 +34,9 @@ A container can return many services with a single get
 
 ```
 
+   name,surname,label = @cont.get([:name,:surname,:label])
+    name.should == 'mario'
+    surname.should == 'rossi'
+    label.should  == 'mario rossi'
 
 ```
