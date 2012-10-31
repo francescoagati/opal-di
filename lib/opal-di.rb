@@ -1,0 +1,5 @@
+module OpalDI
+  
+  
+  
+end
