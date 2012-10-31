@@ -49,6 +49,11 @@
   cont[:label].should == "mario rossi"
 
 </code></pre>
+
+<p>A service can be also shared. In this case is returned always an unique instance of the service.</p>
+
+<pre><code>  cont.set(:accumulator, :shared =&gt; true) {|cnt|  Accumulator.new }
+</code></pre>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/francescoagati">francescoagati</a></p>
